@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Task } from '@take-home/shared';
 import { StorageService } from '../storage/storage.service';
+import { isToday} from '../utils/isToday';
 
 @Injectable({ providedIn: 'root' })
 export class TasksService {
@@ -29,11 +30,11 @@ export class TasksService {
         this.tasks = this.tasks.filter((task) => !task.isArchived);
         break;
       case 'priority':
-        // TODO: add fitler for taks with High Priority
-        throw new Error('Not implemented');
+        this.tasks = this.tasks.filter((task) => task.priority === 'HIGH');
+        break;
       case 'scheduledDate':
-        // TODO: add fitler for tasks Due Today
-        throw new Error('Not implemented');
+        this.tasks = this.tasks.filter((task) => (isToday(task.scheduledDate.toString())));
+        break;
       case 'completed':
         this.tasks = this.tasks.filter((task) => !task.completed);
     }
@@ -41,11 +42,9 @@ export class TasksService {
 
   searchTask(search: string): void {
     if (search) {
-      // TODO: filter tasks which title include search value
-      throw new Error('Not implemented');
+      this.tasks = this.tasks.filter((task) => task.title.includes(search));
     } else {
-      // TODO: reload all tasks from storage
-      throw new Error('Not implemented');
+      this.getTasksFromStorage();
     }
   }
 }

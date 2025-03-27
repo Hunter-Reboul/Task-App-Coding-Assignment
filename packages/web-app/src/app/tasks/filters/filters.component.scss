@@ -1,20 +1,13 @@
+@use '@angular/material' as mat;
+
 .container {
   justify-content: space-around;
 
-  .tasks {
-    display: inline-flex;
-    flex-direction: column;
-    margin: 5px;
-    width: min(calc(100vw - var(--layout-padding)), var(--layout-width-max));
-    gap: var(--layout-gap-size);
-
-    mat-card {
-      &:nth-child(odd) {
-        background-color: var(--background-light-color);
-      }
-      &:nth-child(even) {
-        background-color: var(--background-dark-color);
-      }
-    }
-  }
+  @include mat.chips-overrides((
+    elevated-container-color: #2c76ea,
+    elevated-selected-container-color: #cd31a2,
+    label-text-color: white,
+    selected-label-text-color: white,
+    outline-width: 0px,
+  ));
 }

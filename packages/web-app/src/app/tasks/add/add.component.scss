@@ -1,5 +1,28 @@
+@use '@angular/material' as mat;
+
 .container {
   justify-content: space-around;
+
+  .alert {
+    padding: 15px;
+    background-color: #ea2c2c;
+    color: white;
+    font-size: 1.25rem;
+
+    .close-button {
+      margin-left: 15px;
+      float: right;
+      font-size: 1.375rem;
+      font-weight: bold;
+      line-height: 22.5px;
+      cursor: pointer;
+      transition: 0.2s;
+  
+      &:hover {
+        color: black;
+      }
+    }
+  }
 
   form {
     display: inline-flex;
@@ -12,6 +35,38 @@
       display: flex;
       justify-content: center;
       gap: var(--layout-gap-size);
+    }
+
+    .add-button {
+      transition: scale 0.2s;
+      @include mat.button-overrides((
+        filled-container-color: #2c76ea,
+        filled-hover-state-layer-opacity: 0,
+      ));
+
+      &:hover {
+        scale: 1.075;
+
+        @include mat.button-overrides((
+          filled-container-color: #2a6fde,
+        ));
+      }
+    }
+
+    .cancel-button {
+      transition: scale 0.2s;
+      @include mat.button-overrides((
+        filled-container-color: #ea2c2c,
+        filled-hover-state-layer-opacity: 0,
+      ));
+
+      &:hover {
+        scale: 1.075;
+
+        @include mat.button-overrides((
+          filled-container-color: #de2a2a,
+        ));
+      }
     }
   }
 }

@@ -19,4 +19,12 @@ export const tasksStore: Task[] = [
     priority: TaskPriority.HIGH,
     scheduledDate: new Date(),
   }),
+  generateTask({
+    uuid: '3',
+    title: 'Use Cypress for Visual Testing',
+    completed: false,
+    description: 'Part of the Optional UI Improvements task',
+    priority: TaskPriority.LOW,
+    scheduledDate: new Date(),
+  }),
 ];

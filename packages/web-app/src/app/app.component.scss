@@ -1,7 +1,9 @@
 .container {
   min-height: 100vh;
-  height: max(100%, 100vh);
   display: flex;
+  flex-direction: column;
   width: 100vw;
-  justify-content: center;
+  align-items: center;
+
+  background-color: #e1e1e1;
 }

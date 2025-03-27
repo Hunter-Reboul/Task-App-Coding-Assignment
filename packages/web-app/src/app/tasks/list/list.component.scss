@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .container {
   justify-content: space-around;
 
@@ -5,6 +7,18 @@
     display: flex;
     justify-content: flex-start;
     gap: var(--layout-gap-size);
+  }
+
+  .add-button {
+    transition: scale 0.2s;
+    @include mat.button-overrides((
+      text-label-text-color: black,
+      text-label-text-size: 1.125rem,
+    ));
+
+    &:hover {
+      scale: 1.1;
+    }
   }
 
   .tasks {
@@ -16,11 +30,67 @@
 
     mat-card {
       padding: var(--layout-padding);
+      transition: opacity 1.5s;
+      &:nth-child(odd) {
+        background-color: var(--background-light-color);
+
+        .high-priority {
+          color: var(--error-color-light);
+        }
+      }
+      &:nth-child(even) {
+        background-color: var(--background-dark-color);
+
+        .high-priority {
+          color: var(--error-color-dark);
+        }
+      }
       &.complete {
         background-color: var(--success-color);
       }
       .high-priority {
-        color: var(--error-color);
+        display: flex;
+        justify-items: left;
+      }
+
+      &.deleted {
+        opacity: 0;
+      }
+    }
+
+    mat-card-actions {
+      gap: 5px;
+    }
+
+    .complete-button {
+      transition: scale 0.2s;
+      @include mat.button-overrides((
+        filled-container-color: #2c76ea,
+        filled-hover-state-layer-opacity: 0,
+      ));
+
+      &:hover {
+        scale: 1.075;
+
+        @include mat.button-overrides((
+          filled-container-color: #2a6fde,
+        ));
+      }
+    }
+
+    .delete-button {
+      transition: scale 0.2s;
+      @include mat.button-overrides((
+        filled-container-color: #ea2c2c,
+        filled-hover-state-layer-opacity: 0,
+      ));
+
+      &:hover {
+        scale: 1.075;
+
+        @include mat.button-overrides((
+          filled-container-color: #de2a2a,
+        ));
       }
     }
   }

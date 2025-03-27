@@ -52,6 +52,7 @@ describe('ListComponent', () => {
   let loader: HarnessLoader;
   let component: ListComponent;
   let tasksService: TasksService;
+  let storageService: StorageService;
   let router: Router;
 
   beforeEach(() => {
@@ -78,6 +79,7 @@ describe('ListComponent', () => {
 
   beforeEach(() => {
     router = TestBed.inject(Router);
+    storageService = TestBed.inject(StorageService);
     tasksService = TestBed.inject(TasksService);
     fixture = TestBed.createComponent(ListComponent);
     component = fixture.componentInstance;
@@ -142,5 +144,16 @@ describe('ListComponent', () => {
     expect(tasksService.tasks[0].isArchived).toBe(true);
   });
 
-  it.todo(`should not display archived tasks after deleting them`);
+  it(`should not display archived tasks after deleting them`, async () =>{
+    jest.spyOn(storageService, 'updateTaskItem').mockResolvedValue();
+    jest.spyOn(tasksService, 'getTasksFromStorage').mockResolvedValue();
+    const deleteButton = await loader.getHarness(
+      MatButtonHarness.with({ selector: '[data-testid="delete-task"]' }),
+    );
+    await deleteButton.click();
+    deleteButton.click();
+    fixture.detectChanges();
+    expect(storageService.updateTaskItem).toHaveBeenCalledTimes(3);
+    expect(tasksService.getTasksFromStorage).toHaveBeenCalledTimes(1);
+  });
 });

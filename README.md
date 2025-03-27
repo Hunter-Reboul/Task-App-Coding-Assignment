@@ -12,7 +12,7 @@ At the time of attempting this assignment, I had no knowledge of coding with Ang
 
 The task was to update / add the requested features. Specifically:
 
-1. **Add**
+1. **Add** - COMPLETED
 
    Users aren't able to add tasks to their list
 
@@ -21,21 +21,21 @@ The task was to update / add the requested features. Specifically:
    - Added task should be included in the task list
    - User should be navigated back home if adding or canceling the form.
 
-2. **Filter**
+2. **Filter**  - COMPLETED
 
    Users can only filter the list for `Not Completed` tasks
 
    - Add filtering for `High Priority` tasks
    - Add filtering for `Due Today` tasks
 
-3. **Simple Search**
+3. **Simple Search**  - COMPLETED
 
    Users can't search for tasks based on title
 
    - Implement a simple search that searches for all tasks that contain the search term in it's **title**
    - Clearing the search should reload all tasks
 
-4. **Add Date Picker (Optional)**
+4. **Add Date Picker (Optional)**  - COMPLETED
 
    Users can't set the scheduled date when creating a task
 
@@ -52,7 +52,7 @@ The task was to update / add the requested features. Specifically:
    - You are allowed to use an npm package to help implement this feature such as fuse.js
    - e.g. searching with value _hoem_ should return tasks that include _home_ in title
 
-6. **UX Improvements (Optional)**
+6. **UX Improvements (Optional)**  - COMPLETED
 
    Users aren't excited using our application
 
@@ -72,3 +72,5 @@ You can serve the backend and frontend apps by running `npx nx run node-app:serv
 <img src="./packages/web-app/src/assets/web-app-demo.png" alt="Client Demo" width="200"/>
 
 Each application also includes unit test suites than can be run with `npx nx run node-app:test` and `npx nx run web-app:test`. The test suites are written with the [Jest testing framework](https://jestjs.io/).
+
+Visual test suites are also included for the front-end. First ensure node-app is being served. Then run `npx nx e2e web-app`. The visual test suites are written with [Cypress](https://www.cypress.io/)
